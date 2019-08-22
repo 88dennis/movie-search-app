@@ -15,10 +15,16 @@ app.set("view engine", "ejs");
 
 // })
 
+app.get("/", function(req, res) {
+    res.render("searchPage")
+})
 
 //"http://omdbapi.com/?s=star&apikey=thewdb" API
 app.get("/results", function(req, res) {
-    request("http://omdbapi.com/?s=star&apikey=thewdb", function(error, response, body) {
+    let query = req.query.moviename
+    let url = "http://omdbapi.com/?s=" + query + "&apikey=thewdb"
+    console.log(query);
+    request(url, function(error, response, body) {
         if (!error && response.statusCode == 200) {
             let parseBody = JSON.parse(body)
             console.log(parseBody.Search[0])

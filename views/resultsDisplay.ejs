@@ -3,6 +3,9 @@
 
 <%for( i =0; i < moviesData.Search.length; i++){%>
     <li>
-        <%= moviesData.Search[i].Title%>
+        <%= moviesData.Search[i].Title%> -
+            <%= moviesData.Search[i].Year%>
     </li>
     <%}%>
+        <br>
+        <a href="/">Search Again</a>
